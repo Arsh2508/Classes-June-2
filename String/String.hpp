@@ -17,3 +17,5 @@ private:
 	size_t m_size;
 
 };
+
+#endif
