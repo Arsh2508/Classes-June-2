@@ -101,18 +101,17 @@ size_t Matrix::getCols() const{
 }
 
 void Matrix::print() const{
-	for(int i = 0; i < rows_; ++i){
-		for(int j = 0; j < cols_; ++j){
+	for(size_t i = 0; i < rows_; ++i){
+		for(size_t j = 0; j < cols_; ++j){
 			std::cout<<data_[i][j]<<" ";
 		}
 		std::cout<<std::endl;
 	}
-//	std::cout<<std::endl;
 }
 
 void Matrix::input(){
-	for(int i = 0; i < rows_; ++i){
-		for(int j  = 0; j < cols_; ++j){
+	for(size_t i = 0; i < rows_; ++i){
+		for(size_t j  = 0; j < cols_; ++j){
 			std::cin>>data_[i][j];
 		}
 	}
