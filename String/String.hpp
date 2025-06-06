@@ -8,9 +8,9 @@ public:
 
 	~String();
 	
-	size_t Length();
-	const char * Access();
-	void Print();
+	size_t Length() const;
+	const char * Access() const;
+	void Print() const;
 
 private:
 	char * m_data;

@@ -25,15 +25,15 @@ String::~String(){
 	delete []m_data;
 }
 
-size_t String::Length(){
+size_t String::Length() const{
 	return m_size;
 }
 
-const char * String::Access(){
+const char * String::Access() const{
 	return m_data;
 }
 
-void String::Print(){
+void String::Print() const{
 	std::cout<<m_data<<std::endl;
 }
 
