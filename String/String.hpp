@@ -7,15 +7,17 @@ public:
 	String(const char *);	// Parameterized Constructor
 
 	~String();
+
+	String(const String&);
+	String& operator=(const String&);
 	
 	size_t Length() const;
 	const char * Access() const;
 	void Print() const;
 
 private:
-	char * m_data;
 	size_t m_size;
-
+	char * m_data;
 };
 
 #endif
