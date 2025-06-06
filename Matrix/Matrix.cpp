@@ -1,19 +1,69 @@
 #include <iostream>
 #include "Matrix.hpp"
 
-Matrix::Matrix() : rows_{}, cols_{} {
-	data_ = nullptr;
+Matrix::Matrix() : rows_{}, cols_{}, data_{nullptr} {
 	std::cout<<"Default ctor"<<std::endl;
 }
 
-Matrix::Matrix(size_t rows, size_t cols) : rows_(rows), cols_(cols){
-	data_ = new double *[rows_];
-	
+Matrix::Matrix(size_t rows, size_t cols) : rows_(rows), cols_(cols), data_{new double*[rows]}{
 	for(size_t i = 0; i < rows_; ++i){
 		data_[i] = new double[cols_];
 	}
 	std::cout<<"Param ctor"<<std::endl;
 } 
+
+Matrix::Matrix(const Matrix& other)
+	: rows_{other.rows_}
+	, cols_{other.cols_}
+	, data_{nullptr}
+{
+	if(other.data_ == nullptr){
+		return;
+	}	
+
+	data_ = new double*[rows_];
+
+	for(size_t i = 0; i < rows_; ++i){
+		data_[i] = new double[cols_];
+	}
+
+	for(size_t i = 0; i < rows_; ++i){
+		for(size_t j = 0; j < cols_; ++j){
+			data_[i][j] = other.data_[i][j];
+		}
+	}
+
+	std::cout<<"Copy ctor"<<std::endl;
+}
+
+Matrix& Matrix::operator=(const Matrix& other){
+	if(this == &other){
+		return *this;
+	}
+
+	if(data_){
+		for(size_t i = 0; i < rows_; ++i){
+			delete []data_[i];
+		}
+		delete []data_;
+	}
+
+	rows_ = other.rows_;
+	cols_ = other.cols_;
+	data_ = new double* [rows_];
+	for(size_t i = 0; i < rows_; ++i){
+		data_[i] = new double[cols_];
+	}
+
+	for(size_t i = 0; i < rows_; ++i){
+		for(size_t j = 0; j < cols_; ++j){
+			data_[i][j] = other.data_[i][j];
+		}
+	}
+
+	return *this;
+
+}
 
 Matrix::~Matrix(){
 	std::cout<<"Calling Destructor"<<std::endl;

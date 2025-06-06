@@ -6,8 +6,10 @@ public:
 	Matrix();
 
 	Matrix(size_t, size_t);
-
 	~Matrix();
+
+	Matrix(const Matrix&);
+	Matrix& operator=(const Matrix&);
 
 	void set(size_t, size_t, double);
 	double get(size_t, size_t) const;

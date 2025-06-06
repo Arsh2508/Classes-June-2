@@ -29,14 +29,20 @@ int main()
 
 	std::cout<<"Enter position to get value\n";
 	std::cout<<"Row - ";
-    std::cin>>row;
-    std::cout<<"Col - ";
-    std::cin>>col;
+	std::cin>>row;
+	std::cout<<"Col - ";
+	std::cin>>col;
 	
 	std::cout<<"The value is "<<obj.get(row, col)<<"\n\n";
-
-
 	obj.print();
+
+	
+	Matrix obj1(obj);
+	obj1.print();
+
+	Matrix obj2;
+	obj2 = obj1;
+	obj2.print();
 
 	return 0;
 
