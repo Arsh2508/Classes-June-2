@@ -11,6 +11,9 @@ public:
 	Matrix(const Matrix&);
 	Matrix& operator=(const Matrix&);
 
+	Matrix(Matrix&&);
+	Matrix& operator=(Matrix&&);
+
 	void set(size_t, size_t, double);
 	double get(size_t, size_t) const;
 	size_t getRows() const;

@@ -40,6 +40,9 @@ int main()
 	Matrix obj1(obj);
 	obj1.print();
 
+	Matrix object(std::move(obj1));
+	object.print();
+
 	Matrix obj2;
 	obj2 = obj1;
 	obj2.print();

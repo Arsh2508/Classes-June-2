@@ -12,11 +12,13 @@ Matrix::Matrix(size_t rows, size_t cols) : rows_(rows), cols_(cols), data_{new d
 	std::cout<<"Param ctor"<<std::endl;
 } 
 
+// copy constructor
 Matrix::Matrix(const Matrix& other)
 	: rows_{other.rows_}
 	, cols_{other.cols_}
 	, data_{nullptr}
 {
+
 	if(other.data_ == nullptr){
 		return;
 	}	
@@ -36,6 +38,7 @@ Matrix::Matrix(const Matrix& other)
 	std::cout<<"Copy ctor"<<std::endl;
 }
 
+//copy assignment operator
 Matrix& Matrix::operator=(const Matrix& other){
 	if(this == &other){
 		return *this;
@@ -63,6 +66,39 @@ Matrix& Matrix::operator=(const Matrix& other){
 
 	return *this;
 
+}
+
+//move constructor
+Matrix::Matrix(Matrix&& other) 
+	: rows_{other.rows_}
+	, cols_{other.cols_}
+	, data_{other.data_}
+{
+	other.data_ = nullptr;
+	other.rows_ = 0;
+	other.cols_ = 0;
+}
+
+//move assignment operator
+Matrix& Matrix::operator=(Matrix&& rhs){
+	if(this == &rhs){
+		return *this;
+	}
+
+	for(size_t i = 0; i < rows_; ++i){
+		delete []data_[i];
+	}
+	delete []data_;
+	
+	rows_ = rhs.rows_;
+	cols_ = rhs.cols_;
+	data_ = rhs.data_;
+
+	rhs.data_ = nullptr;
+	rhs.cols_ = 0;
+	rhs.rows_ = 0;
+
+	return *this;
 }
 
 Matrix::~Matrix(){
