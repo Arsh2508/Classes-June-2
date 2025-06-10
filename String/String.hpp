@@ -10,6 +10,9 @@ public:
 
 	String(const String&);
 	String& operator=(const String&);
+
+	String(String&&);
+	String& operator=(String&&);
 	
 	size_t Length() const;
 	const char * Access() const;

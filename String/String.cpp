@@ -21,6 +21,7 @@ String::String(const char * src){
 	}
 }
 
+//copy constructor
 String::String(const String& other)
 	: m_size{other.m_size}
 	, m_data{nullptr}
@@ -35,6 +36,7 @@ String::String(const String& other)
 	}
 }
 
+//copy assignment operator
 String& String::operator=(const String& other){
 	if(this == &other){
 		return *this;
@@ -54,6 +56,34 @@ String& String::operator=(const String& other){
 
 String::~String(){
 	delete []m_data;
+}
+
+//move constructor
+String::String(String&& other)
+	: m_size{other.m_size}
+	, m_data{other.m_data}
+{
+	std::cout<<"move ctor\n";
+
+	other.m_data = nullptr;
+	other.m_size = 0;
+}
+
+//move assignment operator
+String& String::operator=(String&& rhs){
+std::cout<<"move assignment operator\n";
+	if(this == &rhs){
+		return *this;
+	}
+
+	delete []m_data;
+	m_data = rhs.m_data;
+	m_size - rhs.m_size;
+
+	rhs.m_data = nullptr;
+	rhs.m_size = 0;
+
+	return *this;
 }
 
 size_t String::Length() const{

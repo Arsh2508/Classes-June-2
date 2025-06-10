@@ -17,6 +17,13 @@ int main()
 	obj2 = obj1;
 	obj2.Print();
 
+	String mv_obj(std::move(obj2));
+	mv_obj.Print();
+
+	String mv_obj2;
+	mv_obj2 = std::move(mv_obj);
+	mv_obj2.Print();
+
 	return 0;
 
 }
