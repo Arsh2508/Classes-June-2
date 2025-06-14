@@ -154,7 +154,7 @@ void Matrix::input(){
 }
 
 
-	Matrix operator+(const Matrix& lhs, const Matrix& rhs){
+Matrix operator+(const Matrix& lhs, const Matrix& rhs){
 	if(lhs.cols_ != rhs.cols_ || lhs.rows_ != rhs.cols_){
 		return{};
 	}
@@ -216,16 +216,3 @@ const Matrix Matrix::operator++(int){
 
     return tmp;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
