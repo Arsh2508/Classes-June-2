@@ -154,3 +154,78 @@ void Matrix::input(){
 }
 
 
+	Matrix operator+(const Matrix& lhs, const Matrix& rhs){
+	if(lhs.cols_ != rhs.cols_ || lhs.rows_ != rhs.cols_){
+		return{};
+	}
+
+	Matrix tmp(lhs);
+	
+	for(size_t i = 0; i < tmp.rows_; ++i){
+		for(size_t j = 0; j < tmp.cols_; ++j){
+			tmp.data_[i][j] += rhs.data_[i][j];
+		}
+	}
+
+	return tmp;
+
+}
+
+Matrix operator+(const Matrix& lhs, double val){
+	Matrix tmp(lhs);
+	
+	for(size_t i = 0; i < tmp.rows_; ++i){
+		for(size_t j = 0; j < tmp.cols_; ++j){
+			tmp.data_[i][j] += val;
+		}
+	}
+	return tmp;
+}
+
+Matrix operator+(double val, const Matrix rhs){
+	return operator+(rhs, val);
+}
+
+std::ostream& operator<<(std::ostream &os, const Matrix& rhs){
+    for(size_t i = 0; i < rhs.rows_; ++i){
+        for(size_t j = 0; j < rhs.cols_; ++j){
+            os << rhs.data_[i][j]<< ' ';
+        }
+        os<<std::endl;
+    }
+    return os;
+}
+
+Matrix& Matrix::operator++(){
+	for(size_t i = 0; i < rows_; ++i){
+		for(size_t j = 0; j < cols_; ++j){
+        	++data_[i][j];
+        }
+    }
+    return *this;
+}   
+
+const Matrix Matrix::operator++(int){
+    Matrix tmp(*this);
+        
+	for(size_t i = 0; i < rows_; ++i){
+        for(size_t j = 0; j < cols_; ++j){
+            ++data_[i][j];
+        }
+    }
+
+    return tmp;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

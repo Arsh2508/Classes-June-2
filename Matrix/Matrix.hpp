@@ -19,8 +19,16 @@ public:
 	size_t getRows() const;
 	size_t getCols() const;
 	void print() const;
-
 	void input();
+
+	friend Matrix operator+(const Matrix&, const Matrix&);
+	friend Matrix operator+(const Matrix&, double);
+	friend Matrix operator+(double, const Matrix&);
+
+	friend std::ostream& operator<<(std::ostream &, const Matrix&);
+
+	Matrix& operator++();
+	const Matrix operator++(int);
 
 private:
 	size_t rows_;
