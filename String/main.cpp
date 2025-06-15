@@ -16,7 +16,7 @@ int main()
 	obj1.Print();
 	obj2.Print();
 	String obj3 = obj2 + obj1;
-	obj3.Print();
+	std::cout<<obj3<<std::endl;
 
 	return 0;
 

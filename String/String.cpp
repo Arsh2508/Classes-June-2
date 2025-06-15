@@ -160,8 +160,12 @@ String operator+(const char* lhs, const String& rhs){
 }
 
 
-
-
+std::ostream& operator<<(std::ostream &os, const String& src){
+	for(size_t i = 0; i < src.m_size; ++i){
+		os<<src.m_data[i];
+	}
+	return os;
+}
 
 
 

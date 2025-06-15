@@ -22,6 +22,7 @@ public:
 	friend String operator+(const String&, const char*);
 	friend String operator+(const char*, const String&);
 	
+	friend std::ostream& operator<<(std::ostream &, const String&);
 
 private:
 	size_t m_size;
