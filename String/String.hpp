@@ -18,6 +18,11 @@ public:
 	const char * Access() const;
 	void Print() const;
 
+	friend String operator+(const String&, const String&);
+	friend String operator+(const String&, const char*);
+	friend String operator+(const char*, const String&);
+	
+
 private:
 	size_t m_size;
 	char * m_data;

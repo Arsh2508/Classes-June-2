@@ -99,6 +99,70 @@ void String::Print() const{
 }
 
 
+String operator+(const String& lhs, const String& rhs){
+	
+	String res;
+
+	res.m_size = lhs.m_size + rhs.m_size;
+	res.m_data = new char[res.m_size];
+	
+	for(size_t i = 0; i < lhs.m_size; ++i){
+		res.m_data[i] = lhs.m_data[i];
+	}
+
+	for(size_t i = 0; i < rhs.m_size; ++i){
+		res.m_data[rhs.m_size + i] = rhs.m_data[i];
+	}
+
+	res.m_data[res.m_size] = '\0';
+	return res;
+
+}
+String operator+(const String& lhs, const char* rhs){
+    String res;
+
+	size_t rhs_size = strlen(rhs);
+
+    res.m_size = lhs.m_size + rhs_size;
+	res.m_data = new char[res.m_size + 1];
+
+    for(size_t i = 0; i < lhs.m_size; ++i){
+        res.m_data[i] = lhs.m_data[i];
+    }
+
+    for(size_t i = 0; i < rhs_size; ++i){
+        res.m_data[i + lhs.m_size] = rhs[i];
+    }
+
+	res.m_data[res.m_size] = '\0';
+    return res;
+
+}
+
+String operator+(const char* lhs, const String& rhs){
+    String res;
+
+	size_t lhs_size = strlen(lhs);
+    res.m_size = rhs.m_size + lhs_size;
+	res.m_data = new char[res.m_size + 1];
+
+    for(size_t i = 0; i < lhs_size; ++i){
+        res.m_data[i] = lhs[i];
+    }
+
+    for(size_t i = 0; i < rhs.m_size; ++i){
+        res.m_data[lhs_size + i] = rhs.m_data[i];
+    }
+	
+	res.m_data[res.m_size] = '\0';
+    return res;
+
+}
+
+
+
+
+
 
 
 
